@@ -176,7 +176,7 @@ public class AlgoGenCARP extends Algorithme {
             // SCOHY
             // modification de croisement / mutation
             // si le croisement a lieu mais pas la mutation, le else de la mutation va écraser l'effet du croisement
-            //*
+            /*
             if(tauxAppOpCrois <= probCroisement) {
                 enfants = (Individu[]) getOperateurs().get(0).operate(ind1,ind2);
             } else {
@@ -191,7 +191,7 @@ public class AlgoGenCARP extends Algorithme {
                 enfants[1] = ind2;
             }
             //*/
-            /*
+            //*
             if(tauxAppOpCrois <= probCroisement) 
                 enfants = (Individu[])getOperateurs().get(0).operate(ind1, ind2);
             else {

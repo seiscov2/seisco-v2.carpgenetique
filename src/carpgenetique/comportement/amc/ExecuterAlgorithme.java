@@ -72,18 +72,18 @@ public class ExecuterAlgorithme extends Behaviour {
                 
                     meilleur = ((AlgoGenCARP)amc.getAlgo()).getPopulation().getIndividus().get(0);
                 
-                    int aff = 15;
+                    int aff = 10;
                     String m = "";
                     
                     DecimalFormat df = new DecimalFormat();
                     df.setRoundingMode(RoundingMode.HALF_UP);
                     
-                    //for(int h = 0; h < aff; h++)
-                    //    m += " "  + df.format(((AlgoGenCARP)amc.getAlgo()).getPopulation().getIndividus().get(h+1).getFitness());
+                    for(int h = 0; h < aff; h++)
+                        m += " "  + df.format(((AlgoGenCARP)amc.getAlgo()).getPopulation().getIndividus().get(h+1).getFitness());
    
                     // Affichage du nombre de génération
-                    //amc.println(gen + "/" + maxGen + "\t " + ((AlgoGenCARP)amc.getAlgo()).getPopulation().getPopulationSize() + " " + df.format(meilleur.getFitness()) + m);
-                    amc.println(gen + "/" + maxGen);
+                    amc.println(gen + "/" + maxGen + "\t " + ((AlgoGenCARP)amc.getAlgo()).getPopulation().getPopulationSize() + " " + df.format(meilleur.getFitness()) + m);
+                    //amc.println(gen + "/" + maxGen);
                     // Incrémentation du compteur de generation
                     gen++;
                     amc.setCurrentGeneration(gen);
