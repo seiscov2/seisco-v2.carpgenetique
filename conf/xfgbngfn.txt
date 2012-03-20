@@ -1,0 +1,39 @@
+Tournee n° 1:
+1 ---> 2
+1 ---> 4
+Le coût de parcours de cette tache est : 26.0
+Tournee n° 2:
+1 ---> 4
+1 ---> 7
+Le coût de parcours de cette tache est : 60.0
+Tournee n° 3:
+1 ---> 7
+1 ---> 10
+1 ---> 12
+2 ---> 3
+Le coût de parcours de cette tache est : 121.0
+Tournee n° 4:
+2 ---> 3
+2 ---> 4
+2 ---> 9
+3 ---> 4
+Le coût de parcours de cette tache est : 189.0
+Tournee n° 5:
+3 ---> 4
+3 ---> 5
+5 ---> 6
+5 ---> 11
+Le coût de parcours de cette tache est : 254.0
+Tournee n° 6:
+5 ---> 11
+5 ---> 12
+6 ---> 7
+6 ---> 12
+7 ---> 8
+Le coût de parcours de cette tache est : 320.0
+Tournee n° 7:
+7 ---> 8
+7 ---> 12
+8 ---> 10
+8 ---> 11
+9 ---> 10

@@ -1,0 +1,57 @@
+# IP et ports des plateformes
+ate: 
+    - ip: 192.168.0.254
+      ate: ate@osiris
+    #- ip: 192.168.0.254
+    #  ate: ate@seth
+    #  acc: 2000
+    #- ip: 192.168.0.254
+    #  ate: ate@ra
+    #  acc: 2001
+# Containers present sur le reseau
+containers:
+    - c1
+    - c2
+    - c3
+    - c4
+    - c5
+   
+# Probleme CARP   
+carp:
+    probleme: D:\DropBox\SEISCO\problemes\gdb\prob\gdb1.conf
+    
+# Configuration optimiseur genetique pour le CARP
+carpgen:
+    nb_agents: 3
+    se: # Strategie d'Echange
+        pourc_min: 5
+        pourc_max: 100
+    parametre:
+        generation: 2000
+        gen_cons: 5
+        stagne_dem: 10
+        population: 36
+        prob_crois: 0.75
+        prob_muta: 0.5
+        survie: 0.6
+    operateur:    
+        croisement:
+            - lox
+            - ox
+            - x1
+        mutation:
+            - move
+            - swap
+            
+# Configuration ACO pour le CARP
+carpfourmis:
+    iteration: 200
+    fourmis: 30
+    ratio_vue: 1
+    ratio_odorat: 1
+    persistance: 0.9
+    taille_memoire: 10
+    depl_aveugle: 0.1
+    rech_locale: 0.5
+    nb_elites: 5
+    raz: 10
