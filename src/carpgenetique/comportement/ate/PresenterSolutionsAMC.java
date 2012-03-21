@@ -33,12 +33,12 @@ public class PresenterSolutionsAMC extends CyclicBehaviour {
             ArrayList<Individu> inds = (ArrayList<Individu>)ate.getRecSolutions();
             
             MessageHelper mh = new MessageHelper();
+            mh.create(ACLMessage.INFORM, MessageHelper.ID_SOL_ENVOI_AMC);
+            mh.addReceiver(ate.getAmcSol());
             try {
                 if(inds.isEmpty()) {
                     ate.send(mh.get(MessageCodec.encode("no_best")));
                 } else {
-                    mh.create(ACLMessage.INFORM, MessageHelper.ID_SOL_ENVOI_AMC);
-                    mh.addReceiver(ate.getAmcSol());
                     ate.send(mh.get(MessageCodec.encode(inds)));
                 }
             } catch(Exception ex) {

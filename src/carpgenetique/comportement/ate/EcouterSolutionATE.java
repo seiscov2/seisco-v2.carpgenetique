@@ -49,7 +49,7 @@ public class EcouterSolutionATE extends CyclicBehaviour {
                         if(err.equalsIgnoreCase("busy"))
                             ate.println("EcouterSolutionATE: <<"+msgRecu.getSender().getName()+">> est occupé et n'envoit pas de solution.");
                         else
-                            ate.println("EcouterSolutionATE: <<"+msgRecu.getSender().getName()+" a retourné le message '"+err+"'");
+                            ate.println("EcouterSolutionATE: <<"+msgRecu.getSender().getName()+">> a retourné le message '"+err+"'");
                     } else { // Contenu inconnu
                         ate.println("Erreur: Réception d'une réponse de type inconnue [" + response.getClass().getSimpleName() + "].");
                     }

@@ -2,12 +2,12 @@
 ate: 
     - ip: 192.168.0.254
       ate: ate@osiris
-    #- ip: 192.168.0.254
-    #  ate: ate@seth
-    #  acc: 2000
-    #- ip: 192.168.0.254
-    #  ate: ate@ra
-    #  acc: 2001
+    - ip: 192.168.0.254
+      ate: ate@seth
+      acc: 2000
+    - ip: 192.168.0.254
+      ate: ate@ra
+      acc: 2001
 # Containers present sur le reseau
 containers:
     - c1
@@ -22,15 +22,15 @@ carp:
     
 # Configuration optimiseur genetique pour le CARP
 carpgen:
-    nb_agents: 3
+    nb_agents: 1
     se: # Strategie d'Echange
         pourc_min: 5
         pourc_max: 100
     parametre:
         generation: 2000
         gen_cons: 5
-        stagne_dem: 10
-        population: 36
+        stagne_dem: 5
+        population: 35
         prob_crois: 0.75
         prob_muta: 0.5
         survie: 0.6

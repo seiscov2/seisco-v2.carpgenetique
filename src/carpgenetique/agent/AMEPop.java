@@ -38,6 +38,7 @@ public class AMEPop extends AgentMobileEchange {
      * @see EcouterSolutionAME
      * @see PresenterSolutionAME
      * @see PresenterSolutionsAMC
+     * @see EcouterConfiguration
      */
     @Override
     public void setup() {

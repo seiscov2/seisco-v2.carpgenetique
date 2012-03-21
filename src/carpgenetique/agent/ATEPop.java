@@ -16,6 +16,10 @@ import seisco.util.Etat;
 import seisco.util.Parametre;
 
 /**
+ * <p>L'ATE Population est une extension de l'AgentTransersalEchange qui est propre 
+ * à l'algoritme Génétique pour une résolution de problème CARP.
+ * <p>Il gère notament l'échange d'{@link Individu} au moyen d'une fitness au niveau inter plateforme.
+ * <p>C'est également lui qui a pour rôle l'intialisation des autres agents, leur configuration et leur déploiement.
  * 
  * @author Jerome
  * @version 2012
@@ -53,6 +57,10 @@ public class ATEPop extends AgentTransversalEchange {
      * @see DeplacementAME
      * @see EcouterUpdateSolution
      * @see EcouterDemandeSolutionAME
+     * @see EcouterDemandeSolutionATE
+     * @see PresenterSolutionATE
+     * @see PresenterSolutionsAMC
+     * @see EcouterSolutionATE
      */
     @Override
     public void setup() {
@@ -109,6 +117,9 @@ public class ATEPop extends AgentTransversalEchange {
         // Comportement lié à l'échange inter-plateforme
         addBehaviour(new EcouterDemandeSolutionAME(this));
         addBehaviour(new EcouterDemandeSolutionATE(this));
+        addBehaviour(new PresenterSolutionATE(this));
+        addBehaviour(new EcouterSolutionATE(this));
+        addBehaviour(new PresenterSolutionsAMC(this));
     }
 
     /**

@@ -55,7 +55,12 @@ public class EcouterDemandeSolutionAMC extends CyclicBehaviour {
                     //ame.println("Fitness demande: " + (1/Float.parseFloat(fitness)));
                     
                     ame.setRecSolutions(new ArrayList<Individu>());
-                    ame.setEtat("solutionsRecues", false);
+                    
+                    if(ames.isEmpty()) { // si pas d'autre AME, on déclenche la réception de solution
+                        ame.setEtat("solutionsRecues", true);
+                    } else { // sinon, exécution classique (réception normale via les AMEs)
+                        ame.setEtat("solutionsRecues", false);
+                    }
                 }
             }
         } else

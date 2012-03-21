@@ -83,7 +83,7 @@ public class ExecuterAlgorithme extends Behaviour {
    
                     // Affichage du nombre de génération
                     amc.println(gen + "/" + maxGen + "\t " + ((AlgoGenCARP)amc.getAlgo()).getPopulation().getPopulationSize() + " " + df.format(meilleur.getFitness()) + m);
-                    //amc.println(gen + "/" + maxGen);
+                    
                     // Incrémentation du compteur de generation
                     gen++;
                     amc.setCurrentGeneration(gen);
