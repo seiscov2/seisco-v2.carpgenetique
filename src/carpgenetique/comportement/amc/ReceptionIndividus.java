@@ -28,6 +28,10 @@ public class ReceptionIndividus extends CyclicBehaviour {
         this.amc = a;
     }
     
+    /**
+     * BOBIBOB
+     */
+    
     @Override
     public void action() {
         if((Boolean)amc.getEtat("attenteSolution").getValeur()) {
