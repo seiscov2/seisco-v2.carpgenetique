@@ -146,6 +146,7 @@ public class AlgoGenCARP extends Algorithme {
         
         Population anciennePopulation = population;
         Population nouvellePopulation = new Population(anciennePopulation.getNom());
+        nouvellePopulation.setNoCloneType(anciennePopulation.getNoCloneType());
         
         //Mettre à jour les individus survivants
         int nbIndividusSurvie = Math.round(anciennePopulation.getPopulationSize() * tauxSurvie);
@@ -204,26 +205,52 @@ public class AlgoGenCARP extends Algorithme {
             //*/
             //fin modif
 
-            if((i < borneSup) && nouvellePopulation.ajouterIndividu(enfants[0])) {
-                Date start = new Date();
-                float newFitness = getProbleme().fonctionObjectif(enfants[0]);
-                Date end = new Date();
-                enfants[0].setFitness(newFitness);
-                timeObjectiveFunction += end.getTime() - start.getTime();
-                i++;
-            }
             
-            if((i < borneSup) && nouvellePopulation.ajouterIndividu(enfants[1])) {
-                Date start = new Date();
-                float newFitness = getProbleme().fonctionObjectif(enfants[1]);				
-                Date end = new Date();
-                enfants[1].setFitness(newFitness);
-                timeObjectiveFunction += end.getTime() - start.getTime();
-                i++;
+            if(nouvellePopulation.getNoCloneType().equals("fitness")) {
+                if((i < borneSup)) {
+                    calculateFitness(enfants[0]);
+                    if(nouvellePopulation.ajouterIndividu(enfants[0])) i++;
+                }
+                
+                if((i < borneSup)) {
+                    calculateFitness(enfants[1]);
+                    if(nouvellePopulation.ajouterIndividu(enfants[1])) i++;
+                }
+            }
+            else {
+                /*
+                 * cette portion de code sera plus rapide
+                 * car le fitness n'est pas calculé à chaque fois
+                 */
+                if((i < borneSup) && nouvellePopulation.ajouterIndividu(enfants[0])) {
+                    calculateFitness(enfants[0]);
+                    i++;
+                }
+
+                if((i < borneSup) && nouvellePopulation.ajouterIndividu(enfants[1])) {
+                    calculateFitness(enfants[1]);
+                    i++;
+                }
             }
         }
         
         population = nouvellePopulation;
+    }
+    
+    /**
+     * <p>
+     * Évalue un {@link Individu} et garde le
+     * temps d'exécution de cette méthode.
+     * 
+     * @param bob l'individu à évaluer
+     * @since 2012
+     */
+    private void calculateFitness(Individu bob) {
+        Date start = new Date();
+        float newFitness = getProbleme().fonctionObjectif(bob);				
+        Date end = new Date();
+        bob.setFitness(newFitness);
+        timeObjectiveFunction += end.getTime() - start.getTime();
     }
 
 }

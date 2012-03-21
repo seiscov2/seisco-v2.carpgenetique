@@ -25,6 +25,33 @@ import seisco.util.graphe.Arc;
 public class Population implements Concept {
     private String nom;
     private List<Individu> individus;
+    
+    /**
+     * <p>Type de population.
+     * Vaut soit "task", "fitness" ou "none".
+     * Toute autre valeur sera considérée équivalente à "none".
+     * 
+     * <p>
+     * Les différents types et leur signification:
+     * <ul>
+     *  <li>
+     *      "<b> task </b>" : pas d'{@link Individu} ayant
+     *      la même liste de tâches qu'un autre.
+     *  </li>
+     *  <li>
+     *      "<b> fitness </b>" : pas d'{@link Individu}
+     *      ayant le même fitness qu'un autre.
+     *  </li>
+     *  <li>
+     *      "<b> none </b>" : aucune restriction, les
+     *      {@link Individu}s peuvent avoir des clones.
+     *  </li>
+     * </ul>
+     * 
+     * @since 2012
+     * @see Individu#equals(java.lang.Object) 
+     */
+    private String noCloneType = "none";
 
     /**
      * <p>Instancie une nouvelle {@link Population}
@@ -105,6 +132,36 @@ public class Population implements Concept {
     }
 
     /**
+     * <p>
+     * Remplace le type de population.
+     * Si le paramètre ne vaut pas "task" ou "fitness",
+     * {@link #noCloneType} prendra la valeur "none".
+     * 
+     * @param noCloneType le nouveau type de population
+     * @since 2012
+     * @see #noCloneType
+     * @see #getNoCloneType() 
+     */
+    public void setNoCloneType(String noCloneType) {
+        if(noCloneType.equalsIgnoreCase("task") || noCloneType.equalsIgnoreCase("fitness"))
+            this.noCloneType = noCloneType.toLowerCase();
+        else
+            this.noCloneType = "none";
+    }
+
+    /**
+     * <p>
+     * Retourne le type de population.
+     * 
+     * @return {@link #noCloneType}
+     * @since 2012
+     * @see #setNoCloneType(java.lang.String) 
+     */
+    public String getNoCloneType() {
+        return noCloneType;
+    }
+
+    /**
      * <p>Retourne la liste des {@link Individu} de la {@link Population}
      * 
      * @return tous les {@link Individu} de la {@link Population}.
@@ -155,14 +212,21 @@ public class Population implements Concept {
      * @see #retirerIndividu(carpgenetique.algo.Individu) 
      */
     public boolean ajouterIndividu(Individu nouvelIndividu) {
-        //for(Individu i : individus)
-        //    if(i.equals(nouvelIndividu))
-         //       return false;
+        if(noCloneType.equals("task"))
+            if(individus.contains(nouvelIndividu))
+                return false;
         
-        if(!individus.contains(nouvelIndividu))
-            return individus.add(nouvelIndividu);
+        if(noCloneType.equals("fitness"))
+            for(Individu i : individus)
+                if(i.getFitness() == nouvelIndividu.getFitness())
+                    return false;
         
-        return false;
+        /*
+         * Dans tous les autres cas on l'ajoute !
+         * Càd quand noCloneType vaut "none" ou
+         * s'il n'y a pas de clones déjà présents.
+         */
+        return individus.add(nouvelIndividu);
         
     }
 

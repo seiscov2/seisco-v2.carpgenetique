@@ -99,6 +99,7 @@ public class ATEPop extends AgentTransversalEchange {
         jeuparam.addParametre(new Parametre("prob_crois", (float)this.conf.getDouble("carpgen.parametre.prob_crois", 0.6)));
         jeuparam.addParametre(new Parametre("prob_muta" , (float)this.conf.getDouble("carpgen.parametre.prob_muta", 0.4)));
         jeuparam.addParametre(new Parametre("survie"    , (float)this.conf.getDouble("carpgen.parametre.survie", 0.5)));
+        jeuparam.addParametre(new Parametre("noclone_type", this.conf.getString("carpgen.parametre.noclone_type", "none")));
         this.jp = jeuparam;
         
         // Création des agents

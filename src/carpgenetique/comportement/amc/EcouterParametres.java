@@ -54,13 +54,15 @@ public class EcouterParametres extends Behaviour {
                         jp.addParametre(new Parametre("prob_crois", new Float(0.6)));
                         jp.addParametre(new Parametre("prob_muta" , new Float(0.4)));
                         jp.addParametre(new Parametre("survie"    , new Float(0.2)));
+                        jp.addParametre(new Parametre("noclone_type", "none"));
+                        
                         
                         amc.getAlgo().setParametres(jp);
                     }
                     
                     // Maintenant qu'on connait la taille de la population, on peut la générer
-                    ((AlgoGenCARP)amc.getAlgo()).getPopulation().genererIndividus((Integer)amc.getAlgo().getParametres().getElement("population").getValeur(), (ProblemeCARP)amc.getAlgo().getProbleme());
-                    //((AlgoGenCARP)amc.getAlgo()).getPopulation().setIndividus(inds);
+                    ((AlgoGenCARP)amc.getAlgo()).getPopulation().setNoCloneType(amc.getParametre("noclone_type", String.class));
+                    ((AlgoGenCARP)amc.getAlgo()).getPopulation().genererIndividus(amc.getParametre("population", Integer.class), (ProblemeCARP)amc.getAlgo().getProbleme());
                     
                     amc.setEtat("initParam", true);
                 }
