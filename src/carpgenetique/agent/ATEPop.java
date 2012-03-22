@@ -49,7 +49,7 @@ public class ATEPop extends AgentTransversalEchange {
      *  <li>Lancement des agents
      * </ul>
      * 
-     * @since 2012
+     * @version 2012
      * @see ProblemeCARP
      * @see Etat
      * @see JeuParametres
@@ -61,6 +61,7 @@ public class ATEPop extends AgentTransversalEchange {
      * @see PresenterSolutionATE
      * @see PresenterSolutionsAMC
      * @see EcouterSolutionATE
+     * @see AfficherSolution
      */
     @Override
     public void setup() {
@@ -112,8 +113,9 @@ public class ATEPop extends AgentTransversalEchange {
         // Déplacement des agents vers leur container
         addBehaviour(new DeplacementAME(this));
         
-        // Comportement lié à l'update de Solution
+        // Comportement lié à l'update et l'affichage de Solution
         addBehaviour(new EcouterUpdateSolution(this));
+        addBehaviour(new AfficherSolution(this));
         
         // Comportement lié à l'échange inter-plateforme
         addBehaviour(new EcouterDemandeSolutionAME(this));

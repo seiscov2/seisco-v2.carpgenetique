@@ -283,10 +283,17 @@ public class Population implements Concept {
                 Arc tache2 = nouvelIndividu.getTaches().get(indice2);
                 nouvelIndividu.getTaches().set(indice1, tache2);
                 nouvelIndividu.getTaches().set(indice2, tache1);
+                
+                if(this.noCloneType.equals("fitness")) {
+                    float fitness = p.fonctionObjectif(nouvelIndividu);
+                    nouvelIndividu.setFitness(fitness);
+                }
             } while(!ajouterIndividu(nouvelIndividu));
 
-            float fitness = p.fonctionObjectif(nouvelIndividu);
-            nouvelIndividu.setFitness(fitness);
+            if(!this.noCloneType.equals("fitness")) {
+                float fitness = p.fonctionObjectif(nouvelIndividu);
+                nouvelIndividu.setFitness(fitness);
+            }
         }
 		
 	this.trier();

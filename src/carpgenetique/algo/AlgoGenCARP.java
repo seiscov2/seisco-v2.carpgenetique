@@ -153,14 +153,7 @@ public class AlgoGenCARP extends Algorithme {
         
         for(int i = 0; i < nbIndividusSurvie; i++) {
             Individu ind = anciennePopulation.getIndividus().get(i);
-            if(!nouvellePopulation.ajouterIndividu(ind)) {
-                System.out.println("ERREUR");
-                try {
-                    Thread.sleep(30000);
-                } catch(InterruptedException ex) {
-                    Logger.getLogger(AlgoGenCARP.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
+            nouvellePopulation.ajouterIndividu(ind);
         }
         
         //Application des opérateurs aux individus selectionnés
