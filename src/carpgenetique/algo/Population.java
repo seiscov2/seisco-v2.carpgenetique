@@ -29,7 +29,7 @@ public class Population implements Concept {
     /**
      * <p>Type de population.
      * Vaut soit "task", "fitness" ou "none".
-     * Toute autre valeur sera considérée équivalente à "task".
+     * Toute autre valeur sera considérée équivalente à "none".
      * 
      * <p>
      * Les différents types et leur signification:
@@ -51,7 +51,7 @@ public class Population implements Concept {
      * @since 2012
      * @see Individu#equals(java.lang.Object) 
      */
-    private String noCloneType = "task";
+    private String noCloneType = "none";
 
     /**
      * <p>Instancie une nouvelle {@link Population}
@@ -134,8 +134,8 @@ public class Population implements Concept {
     /**
      * <p>
      * Remplace le type de population.
-     * Si le paramètre ne vaut pas "none" ou "fitness",
-     * {@link #noCloneType} prendra la valeur "task".
+     * Si le paramètre ne vaut pas "task" ou "fitness",
+     * {@link #noCloneType} prendra la valeur "none".
      * 
      * @param noCloneType le nouveau type de population
      * @since 2012
@@ -143,10 +143,10 @@ public class Population implements Concept {
      * @see #getNoCloneType() 
      */
     public void setNoCloneType(String noCloneType) {
-        if(noCloneType.equalsIgnoreCase("none") || noCloneType.equalsIgnoreCase("fitness"))
+        if(noCloneType.equalsIgnoreCase("task") || noCloneType.equalsIgnoreCase("fitness"))
             this.noCloneType = noCloneType.toLowerCase();
         else
-            this.noCloneType = "task";
+            this.noCloneType = "none";
     }
 
     /**
