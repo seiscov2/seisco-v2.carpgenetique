@@ -1,6 +1,7 @@
 package carpgenetique.agent;
 
 import carpgenetique.comportement.amc.*;
+import java.util.Date;
 import seisco.agent.AgentMobileCalcul;
 import seisco.util.Etat;
 
@@ -14,6 +15,8 @@ import seisco.util.Etat;
 public class AMCPop extends AgentMobileCalcul {
     protected float lastFitness;
     protected int countFitness;
+            
+    protected Date debutExecution;
     
     /**
      * <p>Initilisation de l'agent.
@@ -38,6 +41,8 @@ public class AMCPop extends AgentMobileCalcul {
         
         this.lastFitness = 0;
         this.countFitness = 0;
+        
+        this.debutExecution = new Date();
         
         this.etats.add(new Etat("demandeSolution", false));
         this.etats.add(new Etat("attenteSolution", false));
@@ -113,5 +118,15 @@ public class AMCPop extends AgentMobileCalcul {
      */
     public void setLastFitness(float lastFitness) {
         this.lastFitness = lastFitness;
+    }
+    
+    /**
+     * <p>Retourne le temps en millisecode du début de l'exécution de l'agent.
+     * 
+     * @return 
+     *      Le temps en millisecondes
+     */
+    public long getDebutExecution() {
+        return this.debutExecution.getTime();
     }
 }

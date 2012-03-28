@@ -15,10 +15,12 @@ import seisco.probleme.Solution;
 public class AfficherSolution extends Behaviour {
 
     private ATEPop ate;
+    private boolean done;
     
     public AfficherSolution(ATEPop a) {
         super(a);
         this.ate = a;
+        this.done = false;
     }
 
     @Override
@@ -27,6 +29,7 @@ public class AfficherSolution extends Behaviour {
             Solution ind = ate.getCacheSolution();
             if(ind != null) {
                 ind.afficher();
+                this.done = true;
             } else {
                 ate.println("Aucune solution à afficher");
             }
@@ -36,7 +39,6 @@ public class AfficherSolution extends Behaviour {
 
     @Override
     public boolean done() {
-        return ate.getNbAgentsArretes() >= ate.getNbAgents();
+        return this.done;
     }
-
 }

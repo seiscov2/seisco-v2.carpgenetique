@@ -1,6 +1,7 @@
 package carpgenetique.comportement.ate;
 
 import carpgenetique.agent.ATEPop;
+import carpgenetique.algo.Individu;
 import carpgenetique.util.MessageHelper;
 import jade.core.AID;
 import jade.core.behaviours.CyclicBehaviour;
@@ -44,6 +45,13 @@ public class EcouterDemandeSolutionAME extends CyclicBehaviour {
                     
                     ate.setATEs(ates);
                     
+                    // Si l'ATE a une meilleure solution en cache, l'ajouter à la liste
+                    if(ate.getCacheSolution()!=null && ate.getCacheFitness()<Float.valueOf(fitness)) {
+                        ate.getRecSolutions().add((Individu)ate.getCacheSolution());
+                        if(ates.isEmpty()) { // On vérifie que l'ATE n'est pas en stand alone
+                            ate.setEtat("solutionsRecues", true);
+                        }
+                    }
                     // Ajout de l'AMC demandant des solutions
                     String idAmc = msgRecu.getSender().getLocalName().substring(4);
                     ate.setAmcSol(new AID("amc_" + idAmc, AID.ISLOCALNAME));

@@ -54,6 +54,7 @@ public class ReceptionIndividus extends CyclicBehaviour {
                                     int taillePop = algo.getPopulation().getIndividus().size();
                                     for(int i=0, pos=0; i < inds.size(); i++) {
                                         if(algo.getPopulation().ajouterIndividu(inds.get(i))) {
+                                            algo.getPopulation().trier();
                                             algo.getPopulation().getIndividus().remove(taillePop-(pos+1));
                                             pos++;
                                         }

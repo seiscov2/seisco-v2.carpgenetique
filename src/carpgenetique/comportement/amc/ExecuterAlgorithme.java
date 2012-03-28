@@ -144,17 +144,19 @@ public class ExecuterAlgorithme extends Behaviour {
             //((AlgoGenCARP)amc.getAlgo()).getPopulation().getIndividus().get(0).afficher();
             
             // Affichage du temps utilisé par l'AMC lors de son exécution
-            amc.println("Temps écoulé:");
-            amc.println(DateHelper.formatMillisecondes(timeExecution));
+            Date finExecution = new Date();
+            
+            amc.println("Temps écoulé total: " + DateHelper.formatMillisecondes(finExecution.getTime()-amc.getDebutExecution()));
+            amc.println("Dont " + DateHelper.formatMillisecondes(timeExecution) + " pour l'exécution de l'algoritme.");
             amc.println("Dont " + DateHelper.formatMillisecondes(amc.getAlgo().getTimeObjectiveFunction()) + " pour les exécutions successives de la méthode fonctionObjectif");
-            amc.println("Dont " + DateHelper.formatMillisecondes(((ProblemeCARP)amc.getAlgo().getProbleme()).getTimeBoucles()) + " pour les exécutions successives des boucles dans la fonction split");
-            amc.println("Dont " + DateHelper.formatMillisecondes(((ProblemeCARP)amc.getAlgo().getProbleme()).getTimeCalculDist()) + " pour les exécutions successives de la méthode de calcul de distance");
+            //amc.println("Dont " + DateHelper.formatMillisecondes(((ProblemeCARP)amc.getAlgo().getProbleme()).getTimeBoucles()) + " pour les exécutions successives des boucles dans la fonction split");
+            //amc.println("Dont " + DateHelper.formatMillisecondes(((ProblemeCARP)amc.getAlgo().getProbleme()).getTimeCalculDist()) + " pour les exécutions successives de la méthode de calcul de distance");
 		
             
             return true;
         }
-        // on vérifie un déplacement toutes les 100 generations
-        else if((gen%100==0) && ((Boolean)amc.getEtat("deplacement").getValeur())) 
+        // on vérifie une demande de déplacement
+        else if((Boolean)amc.getEtat("deplacement").getValeur())
             return true;
         
         return false;

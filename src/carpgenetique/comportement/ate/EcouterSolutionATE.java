@@ -43,7 +43,6 @@ public class EcouterSolutionATE extends CyclicBehaviour {
                         Individu ind = (Individu)response;
                         
                         ate.getRecSolutions().add(ind);
-                        ate.println("\tRéception sol: " + ind.getFitness() + " @ " + msgRecu.getSender().getName());
                     } else if(response instanceof String) { // Réception message d'erreur
                         String err = String.valueOf(response);
                         if(err.equalsIgnoreCase("busy"))

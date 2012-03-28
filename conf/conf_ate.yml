@@ -1,22 +1,20 @@
 # Plateforme
-platerforme: 
-    ate: # IP et ports des plateformes
-        - ip: 192.168.0.254
-          ate: ate@osiris
-        #- ip: 192.168.0.254
-        #  ate: ate@seth
-        #  acc: 2000
-        #- ip: 192.168.0.254
-        #  ate: ate@ra
-        #  acc: 2001
-    # Containers present sur le reseau
-    containers:
-        - c1
-        - c2
-        - c3
-        - c4
-        - c5
-    nb_agents: 5
+ate: 
+    - ip: 192.168.0.254
+      ate: ate@osiris
+    #- ip: 192.168.0.254
+    #  ate: ate@seth
+    #  acc: 2000
+    #- ip: 192.168.0.254
+    #  ate: ate@ra
+    #  acc: 2001
+# Containers present sur le reseau
+containers:
+    - c1
+    - c2
+    - c3
+    - c4
+    - c5
     
 # Probleme CARP   
 carp:
@@ -24,6 +22,7 @@ carp:
     
 # Configuration optimiseur genetique pour le CARP
 carpgen:
+    nb_agents: 5
     se: # Strategie d'Echange
         pourc_min: 5
         pourc_max: 100
@@ -32,10 +31,10 @@ carpgen:
         gen_cons: 10
         stagne_dem: 10
         population: 35
-        prob_crois: 0.6
+        prob_crois: 0.5
         prob_muta: 0.4
         survie: 0.8
-        noclone_type: fitness
+        noclone_type: task
     operateur:    
         croisement:
             - lox

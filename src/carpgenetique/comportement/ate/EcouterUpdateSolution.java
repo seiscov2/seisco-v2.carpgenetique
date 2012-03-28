@@ -39,8 +39,9 @@ public class EcouterUpdateSolution extends CyclicBehaviour {
                         ate.setCacheFitness(fitness);
                         ate.setCacheSolution(null);
                         ate.setCacheAMC(msgRecu.getSender());
-                        System.out.println("Nouveau fit !");
-                        System.out.println("\t" + fitness + " @ " + msgRecu.getSender().getLocalName());
+                        ate.setEtat("solutionPresente", false);
+                        ate.println("Nouveau fitness !");
+                        ate.println("\t" + fitness + " @ " + msgRecu.getSender().getLocalName());
                     } 
                 }
             }

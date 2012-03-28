@@ -55,8 +55,6 @@ public class EcouterDemandeSolutionATE extends CyclicBehaviour {
                         } else {
                             this.sendErrorMessage(msgRecu.getSender(), "no_best");
                         }
-                        
-                        ate.println("Réception d'une demande : <<" + msgRecu.getSender().getName() + ">> " + fitnessDem);
                     }
                 }
             }
