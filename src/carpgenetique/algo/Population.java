@@ -29,7 +29,7 @@ public class Population implements Concept {
     /**
      * <p>Type de population.
      * Vaut soit "task", "fitness" ou "none".
-     * Toute autre valeur sera considérée équivalente à "none".
+     * Toute autre valeur sera considérée équivalente à "task".
      * 
      * <p>
      * Les différents types et leur signification:
@@ -51,7 +51,7 @@ public class Population implements Concept {
      * @since 2012
      * @see Individu#equals(java.lang.Object) 
      */
-    private String noCloneType = "none";
+    private String noCloneType = "task";
 
     /**
      * <p>Instancie une nouvelle {@link Population}
@@ -134,8 +134,8 @@ public class Population implements Concept {
     /**
      * <p>
      * Remplace le type de population.
-     * Si le paramètre ne vaut pas "task" ou "fitness",
-     * {@link #noCloneType} prendra la valeur "none".
+     * Si le paramètre ne vaut pas "none" ou "fitness",
+     * {@link #noCloneType} prendra la valeur "task".
      * 
      * @param noCloneType le nouveau type de population
      * @since 2012
@@ -143,10 +143,10 @@ public class Population implements Concept {
      * @see #getNoCloneType() 
      */
     public void setNoCloneType(String noCloneType) {
-        if(noCloneType.equalsIgnoreCase("task") || noCloneType.equalsIgnoreCase("fitness"))
+        if(noCloneType.equalsIgnoreCase("none") || noCloneType.equalsIgnoreCase("fitness"))
             this.noCloneType = noCloneType.toLowerCase();
         else
-            this.noCloneType = "none";
+            this.noCloneType = "task";
     }
 
     /**
@@ -336,7 +336,7 @@ public class Population implements Concept {
      * @see Individu#toString() 
      */
     public String toString() {
-        String resultat = "Population " + nom + "\n";
+        String resultat = "Population " + nom + " (noclone_type=\""+this.noCloneType+"\")\n";
         int index = 1;
         for(Individu i : individus)
             resultat += index + ") " + i.toString();

@@ -54,7 +54,7 @@ public class EcouterParametres extends Behaviour {
                         jp.addParametre(new Parametre("prob_crois", new Float(0.6)));
                         jp.addParametre(new Parametre("prob_muta" , new Float(0.4)));
                         jp.addParametre(new Parametre("survie"    , new Float(0.2)));
-                        jp.addParametre(new Parametre("noclone_type", "none"));
+                        jp.addParametre(new Parametre("noclone_type", "task"));
                         
                         
                         amc.getAlgo().setParametres(jp);
