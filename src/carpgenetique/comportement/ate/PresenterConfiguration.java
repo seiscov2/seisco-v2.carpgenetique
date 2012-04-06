@@ -14,7 +14,7 @@ import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import seisco.algo.Operateur;
-import seisco.util.MessageCodec;
+import seisco.util.ObjectCodec;
 
 /**
  * <p>Ce comportement envoi la configuration à l'AMC et l'AME
@@ -45,7 +45,7 @@ public class PresenterConfiguration extends Behaviour {
         mh.create(ACLMessage.INFORM, MessageHelper.ID_CONT_AME);
         mh.addReceiver(ame);
         try {
-            ate.send(mh.get(MessageCodec.encode((ArrayList)ate.getNomCont())));
+            ate.send(mh.get(ObjectCodec.encode((ArrayList)ate.getNomCont())));
         } catch(Exception ex) {
             ate.println("Erreur: Impossible de sérialiser la liste des containeurs.");
         }

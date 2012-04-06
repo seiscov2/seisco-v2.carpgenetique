@@ -6,7 +6,7 @@ import carpgenetique.util.MessageHelper;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
-import seisco.util.MessageCodec;
+import seisco.util.ObjectCodec;
 
 /**
  * <p>Ce comportement permet de récupérer les solutions demandées aux autres ATE.
@@ -34,7 +34,7 @@ public class EcouterSolutionATE extends CyclicBehaviour {
                 if(ate.getATEs().contains(msgRecu.getSender())) { // Si présent dans la liste des demandes
                     Object response=null;
                     try {
-                        response = MessageCodec.decode(msgRecu.getContent());
+                        response = ObjectCodec.decode(msgRecu.getContent());
                     } catch(Exception ex) {
                         ate.println("Erreur: Impossible de désérialiser le contenu.\n\t(Raison: "+ex.getMessage()+")");
                     }

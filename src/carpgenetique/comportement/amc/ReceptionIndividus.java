@@ -9,7 +9,7 @@ import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 import java.util.ArrayList;
 import java.util.List;
-import seisco.util.MessageCodec;
+import seisco.util.ObjectCodec;
 
 /**
  * <p>Ce comportement permet de récupérer les solutions demandées à l'AME.
@@ -43,7 +43,7 @@ public class ReceptionIndividus extends CyclicBehaviour {
                             throw new NullPointerException();
                         
                         try {
-                            Object obj = MessageCodec.decode(msgRecu.getContent());
+                            Object obj = ObjectCodec.decode(msgRecu.getContent());
                             
                             if(obj instanceof List) {
                                 List<Individu> inds = (ArrayList<Individu>)obj;

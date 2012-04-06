@@ -4,7 +4,7 @@ import carpgenetique.agent.AMEPop;
 import carpgenetique.util.MessageHelper;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
-import seisco.util.MessageCodec;
+import seisco.util.ObjectCodec;
 
 /**
  * <p>Ce comportement envoi la solution demandée par un AME
@@ -33,7 +33,7 @@ public class PresenterSolutionAME extends CyclicBehaviour {
                 rep.addReceiver(ame.getCacheDemandeurSolution());
             
                 try {
-                    ame.send(rep.get(MessageCodec.encode(ame.getCacheSolution())));
+                    ame.send(rep.get(ObjectCodec.encode(ame.getCacheSolution())));
                 } catch(Exception ex) {
                     ame.println("Erreur: Impossible de sérialiser l'individu.\n\t(Raison: "+ex.getMessage()+")");
                 }

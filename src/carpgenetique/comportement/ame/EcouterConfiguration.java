@@ -6,7 +6,7 @@ import jade.core.behaviours.Behaviour;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 import java.util.ArrayList;
-import seisco.util.MessageCodec;
+import seisco.util.ObjectCodec;
 
 /**
  * <p>Ce comportement écoute la configuration envoyée par l'ATE.
@@ -39,7 +39,7 @@ public class EcouterConfiguration extends Behaviour {
                     
                     try {
                         ArrayList cont;
-                        cont = MessageCodec.decode(msgRecu.getContent(), ArrayList.class);
+                        cont = ObjectCodec.decode(msgRecu.getContent(), ArrayList.class);
                         
                         ame.setNextMachines(cont);
                         

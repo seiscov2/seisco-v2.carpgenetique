@@ -6,7 +6,7 @@ import jade.core.AID;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
-import seisco.util.MessageCodec;
+import seisco.util.ObjectCodec;
 
 /**
  * <p>Ce comportement écoute les demandes de solutions en provenance d'autre AME.
@@ -74,7 +74,7 @@ public class EcouterDemandeSolutionAME extends CyclicBehaviour {
         rep.create(ACLMessage.INFORM, MessageHelper.ID_SOL_ENVOI_AME);
         rep.addReceiver(rec);
         try {
-            ame.send(rep.get(MessageCodec.encode(msg)));
+            ame.send(rep.get(ObjectCodec.encode(msg)));
         } catch(Exception ex) {
             ame.println("Erreur: Impossible de sérialiser le message.\n\t(Raison: "+ex.getMessage()+")");
         }

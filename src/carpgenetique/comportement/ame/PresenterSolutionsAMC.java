@@ -7,7 +7,7 @@ import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
 import java.util.ArrayList;
 import java.util.List;
-import seisco.util.MessageCodec;
+import seisco.util.ObjectCodec;
 
 /**
  * <p>Ce comportement envoi la liste des solutions, recues des autres AMEs, à l'AMC.
@@ -42,7 +42,7 @@ public class PresenterSolutionsAMC extends CyclicBehaviour {
                 } else {
                     mh.create(ACLMessage.INFORM, MessageHelper.ID_SOL_ENVOI_AMC);
                     mh.addReceiver(ame.getAMC());
-                    ame.send(mh.get(MessageCodec.encode(inds)));
+                    ame.send(mh.get(ObjectCodec.encode(inds)));
                 }
             } catch(Exception ex) {
                 ame.println("Erreur: Impossible d'envoyer les solutions.\n\t(Raison: "+ex.getMessage()+")");

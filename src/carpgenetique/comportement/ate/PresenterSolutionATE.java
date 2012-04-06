@@ -4,7 +4,7 @@ import carpgenetique.agent.ATEPop;
 import carpgenetique.util.MessageHelper;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
-import seisco.util.MessageCodec;
+import seisco.util.ObjectCodec;
 
 /**
  * <p>Ce comportement envoi la solution demandée par un ATE
@@ -33,7 +33,7 @@ public class PresenterSolutionATE extends CyclicBehaviour {
                 rep.addReceiver(ate.getCacheDemandeurSolution());
             
                 try {
-                    ate.send(rep.get(MessageCodec.encode(ate.getCacheSolution())));
+                    ate.send(rep.get(ObjectCodec.encode(ate.getCacheSolution())));
                 } catch(Exception ex) {
                     ate.println("Erreur: Impossible de sérialiser l'individu.\n\t(Raison: "+ex.getMessage()+")");
                 }

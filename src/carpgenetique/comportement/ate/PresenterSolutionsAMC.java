@@ -6,7 +6,7 @@ import carpgenetique.util.MessageHelper;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
 import java.util.ArrayList;
-import seisco.util.MessageCodec;
+import seisco.util.ObjectCodec;
 
 /**
  * <p>Ce comportement envoi la liste des solutions, recues des autres AMEs, à l'AMC.
@@ -37,9 +37,9 @@ public class PresenterSolutionsAMC extends CyclicBehaviour {
             mh.addReceiver(ate.getAmcSol());
             try {
                 if(inds.isEmpty()) {
-                    ate.send(mh.get(MessageCodec.encode("no_best")));
+                    ate.send(mh.get(ObjectCodec.encode("no_best")));
                 } else {
-                    ate.send(mh.get(MessageCodec.encode(inds)));
+                    ate.send(mh.get(ObjectCodec.encode(inds)));
                 }
             } catch(Exception ex) {
                 ate.println("Erreur: Impossible d'envoyer les solutions.\n\t(Raison: "+ex.getMessage()+")");
