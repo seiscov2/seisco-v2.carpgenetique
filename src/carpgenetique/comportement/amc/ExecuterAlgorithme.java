@@ -117,6 +117,7 @@ public class ExecuterAlgorithme extends Behaviour {
             
             Date fin_time = new Date();
             timeExecution += fin_time.getTime() - deb_time.getTime();
+            amc.setAlgoExecTime(timeExecution);
         } else
             block(2000);
     }
@@ -144,9 +145,9 @@ public class ExecuterAlgorithme extends Behaviour {
             //((AlgoGenCARP)amc.getAlgo()).getPopulation().getIndividus().get(0).afficher();
             
             // Affichage du temps utilisé par l'AMC lors de son exécution
-            Date finExecution = new Date();
+            amc.setFinExecution(new Date());
             
-            amc.println("Temps écoulé total: " + DateHelper.formatMillisecondes(finExecution.getTime()-amc.getDebutExecution()));
+            amc.println("Temps écoulé total: " + DateHelper.formatMillisecondes(amc.getFinExecution()-amc.getDebutExecution()));
             amc.println("Dont " + DateHelper.formatMillisecondes(timeExecution) + " pour l'exécution de l'algoritme.");
             amc.println("Dont " + DateHelper.formatMillisecondes(amc.getAlgo().getTimeObjectiveFunction()) + " pour les exécutions successives de la méthode fonctionObjectif");
             //amc.println("Dont " + DateHelper.formatMillisecondes(((ProblemeCARP)amc.getAlgo().getProbleme()).getTimeBoucles()) + " pour les exécutions successives des boucles dans la fonction split");
