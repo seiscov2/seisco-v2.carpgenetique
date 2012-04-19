@@ -121,7 +121,7 @@ public class ExecuterAlgorithme extends Behaviour {
             timeExecution += fin_time.getTime() - deb_time.getTime();
             amc.setAlgoExecTime(timeExecution);
         } else
-            block(2000);
+            block(1000);
     }
 
     /**
