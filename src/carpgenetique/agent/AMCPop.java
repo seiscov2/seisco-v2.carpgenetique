@@ -159,7 +159,7 @@ public class AMCPop extends AgentMobileCalcul {
         try {
             fos = new FileOutputStream("amc.txt");
             out = new PrintStream(fos);
-            Individu sol = (Individu)((AlgoGenCARP)this.algo).getPopulation().getIndividus().get(0);
+            Individu sol = (Individu)this.cacheSolution;
             
             println(this.getLocalName() + " - " + sol.getFitness(), out);
             println("Temps total: " + DateHelper.formatMillisecondes(finExecution.getTime()-debutExecution.getTime()), out);
@@ -167,6 +167,8 @@ public class AMCPop extends AgentMobileCalcul {
             println("\tfonctionObjectif : " + DateHelper.formatMillisecondes(algo.getTimeObjectiveFunction()), out);
         } catch(FileNotFoundException ex) {
             Logger.getLogger(AMCPop.class.getName()).log(Level.SEVERE, null, ex);
+        } catch(Exception e) {
+            println("Erreur lors de l'arret: \n" + e.getMessage());
         } finally {
             try {
                 fos.close();

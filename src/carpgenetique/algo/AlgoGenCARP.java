@@ -157,7 +157,7 @@ public class AlgoGenCARP extends Algorithme {
         }
         
         //Application des opérateurs aux individus selectionnés
-        int borneSup = Math.round((anciennePopulation.getPopulationSize()-nbIndividusSurvie));
+        int borneSup = anciennePopulation.getPopulationSize()-nbIndividusSurvie;
         Individu[] enfants = new Individu[2];
         
         for(int i=0; i < borneSup; ) {

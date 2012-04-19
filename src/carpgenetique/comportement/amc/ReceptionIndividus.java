@@ -52,11 +52,10 @@ public class ReceptionIndividus extends CyclicBehaviour {
                                 if(!inds.isEmpty()) {
                                     AlgoGenCARP algo = (AlgoGenCARP)amc.getAlgo();
                                     int taillePop = algo.getPopulation().getIndividus().size();
-                                    for(int i=0, pos=0; i < inds.size(); i++) {
+                                    for(int i=0; i < inds.size(); i++) {
                                         if(algo.getPopulation().ajouterIndividu(inds.get(i))) {
                                             algo.getPopulation().trier();
-                                            algo.getPopulation().getIndividus().remove(taillePop-(pos+1));
-                                            pos++;
+                                            algo.getPopulation().getIndividus().remove(taillePop-1);
                                         }
                                     }
                                 }
