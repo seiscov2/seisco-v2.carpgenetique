@@ -73,12 +73,14 @@ public class ExecuterAlgorithme extends Behaviour {
                     meilleur = ((AlgoGenCARP)amc.getAlgo()).getPopulation().getIndividus().get(0);
                 
                     int aff = 10;
+                    if(((AlgoGenCARP)amc.getAlgo()).getPopulation().getPopulationSize() < 10) aff = ((AlgoGenCARP)amc.getAlgo()).getPopulation().getPopulationSize();
+                    
                     String m = "";
                     
                     DecimalFormat df = new DecimalFormat();
                     df.setRoundingMode(RoundingMode.HALF_UP);
                     
-                    for(int h = 0; h < aff; h++)
+                    for(int h = 0; h < aff-1; h++)
                         m += " "  + df.format(((AlgoGenCARP)amc.getAlgo()).getPopulation().getIndividus().get(h+1).getFitness());
    
                     // Affichage du nombre de génération
