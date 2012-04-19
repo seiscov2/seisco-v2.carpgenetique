@@ -73,8 +73,7 @@ public class ReceptionIndividus extends CyclicBehaviour {
                     amc.println("Erreur: Performative INFORM non recu.");
             } else
                 block(1000);
-        } else
-            block(1000);
+        }
     }
 
 }

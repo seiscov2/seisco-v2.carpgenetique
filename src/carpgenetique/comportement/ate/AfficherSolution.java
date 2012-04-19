@@ -56,8 +56,7 @@ public class AfficherSolution extends Behaviour {
             } else {
                 ate.println("Aucune solution à afficher");
             }
-        } else
-            block(1000);
+        }
     }
 
     @Override

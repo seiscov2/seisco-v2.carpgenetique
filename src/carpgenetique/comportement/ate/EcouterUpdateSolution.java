@@ -40,13 +40,12 @@ public class EcouterUpdateSolution extends CyclicBehaviour {
                         ate.setCacheSolution(null);
                         ate.setCacheAMC(msgRecu.getSender());
                         ate.setEtat("solutionPresente", false);
-                        ate.println("Nouveau fitness !");
-                        ate.println("\t" + fitness + " @ " + msgRecu.getSender().getLocalName());
+                        ate.println("Réception fitness : " + fitness + " @ " + msgRecu.getSender().getLocalName());
                     } 
                 }
             }
         } else
-            block(2000);
+            block(1000);
     }
 
 }

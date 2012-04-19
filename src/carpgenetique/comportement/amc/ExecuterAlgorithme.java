@@ -38,7 +38,7 @@ public class ExecuterAlgorithme extends Behaviour {
         int maxGen = amc.getParametre("generation", Integer.class);
         
         if(gen > maxGen) { // Si fin de la generation
-            amc.println("GENERATION TERMINEE\n\tINUTILE DE DEPLACER L'AGENT DE NOUVEAU !!!");
+            amc.println("GENERATION TERMINEE");
             return;
         }
         

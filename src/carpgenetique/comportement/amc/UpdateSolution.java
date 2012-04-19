@@ -38,8 +38,7 @@ public class UpdateSolution extends CyclicBehaviour {
                 amc.send(mh.get(String.valueOf(sol.getFitness())));
             
             amc.setEtat("updateSolution", false);
-        } else
-            block(1000);
+        }
     }
 
 }

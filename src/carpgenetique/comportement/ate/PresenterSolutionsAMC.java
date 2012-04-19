@@ -47,8 +47,7 @@ public class PresenterSolutionsAMC extends CyclicBehaviour {
             
             ate.setRecSolutions(new ArrayList<Individu>());
             ate.setEtat("solutionsRecues", false);
-        } else 
-            block(1000);
+        }
     }
 
 }

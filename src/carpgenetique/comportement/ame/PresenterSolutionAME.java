@@ -41,8 +41,7 @@ public class PresenterSolutionAME extends CyclicBehaviour {
             
             ame.setEtat("envoiSolution", false);
             ame.setCacheDemandeurSolution(null);
-        } else 
-            block(1000);
+        }
     }
 
 }

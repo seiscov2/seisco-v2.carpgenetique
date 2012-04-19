@@ -35,8 +35,7 @@ public class DemandeIndividu extends CyclicBehaviour {
             
             amc.setEtat("demandeSolution", false);
             amc.setEtat("attenteSolution", true);
-        } else
-            block(1000);
+        }
     }
 
 }
