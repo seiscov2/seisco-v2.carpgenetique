@@ -53,6 +53,7 @@ public class ReceptionIndividus extends CyclicBehaviour {
                                     AlgoGenCARP algo = (AlgoGenCARP)amc.getAlgo();
                                     int taillePop = algo.getPopulation().getIndividus().size();
                                     for(int i=0; i < inds.size(); i++) {
+                                        amc.println("fitness " + i + ":  " + inds.get(i).getFitness());
                                         if(algo.getPopulation().ajouterIndividu(inds.get(i))) {
                                             algo.getPopulation().trier();
                                             algo.getPopulation().getIndividus().remove(taillePop-1);
@@ -61,7 +62,8 @@ public class ReceptionIndividus extends CyclicBehaviour {
                                 }
                             } else if(obj instanceof String) {
                                 amc.println("Aucune solution recue\n\t<<"+msgRecu.getSender().getLocalName()+">>\n\t["+String.valueOf(obj)+"]");
-                            }
+                            } else 
+                                amc.println("Erreur pas de liste: " + obj.getClass().getCanonicalName());
                         } catch(Exception ex) {
                             amc.println("Erreur: Impossible de décoder les individus.\n\r(Raison: "+ex.getMessage()+")");
                         }

@@ -1,6 +1,5 @@
 package carpgenetique.comportement.amc;
 
-import carp.ProblemeCARP;
 import carpgenetique.agent.AMCPop;
 import carpgenetique.algo.AlgoGenCARP;
 import carpgenetique.algo.Individu;
@@ -57,7 +56,7 @@ public class ExecuterAlgorithme extends Behaviour {
         
         if(canRunAlgo()) {
             
-            Date deb_time = new Date();
+            long deb_time = System.currentTimeMillis();
                     
             try {
                 Individu meilleur=null;
@@ -117,8 +116,8 @@ public class ExecuterAlgorithme extends Behaviour {
                 amc.println("Erreur lors de l'execution de l'algorithme " + amc.getAlgo().getNom());
             }
             
-            Date fin_time = new Date();
-            timeExecution += fin_time.getTime() - deb_time.getTime();
+            long fin_time = System.currentTimeMillis();
+            timeExecution += fin_time - deb_time;
             amc.setAlgoExecTime(timeExecution);
         } else
             block(1000);
@@ -147,7 +146,7 @@ public class ExecuterAlgorithme extends Behaviour {
             //((AlgoGenCARP)amc.getAlgo()).getPopulation().getIndividus().get(0).afficher();
             
             // Affichage du temps utilisé par l'AMC lors de son exécution
-            amc.setFinExecution(new Date());
+            amc.setFinExecution(System.currentTimeMillis());
             
             amc.println("Temps écoulé total: " + DateHelper.formatMillisecondes(amc.getFinExecution()-amc.getDebutExecution()));
             amc.println("Dont " + DateHelper.formatMillisecondes(timeExecution) + " pour l'exécution de l'algoritme.");

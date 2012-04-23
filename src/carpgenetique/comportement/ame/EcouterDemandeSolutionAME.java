@@ -41,7 +41,7 @@ public class EcouterDemandeSolutionAME extends CyclicBehaviour {
                     } else {                   
                         float fitnessDem = Float.parseFloat(msgRecu.getContent());
 
-                        if(ame.getCacheFitness()>fitnessDem) {
+                        if(ame.getCacheFitness()<fitnessDem) {
                             // Vérification du cache
                             if(ame.getCacheSolution()==null) {
                                 // Récupération de l'individu + mise en cache

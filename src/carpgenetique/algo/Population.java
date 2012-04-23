@@ -2,11 +2,7 @@ package carpgenetique.algo;
 
 import carp.ProblemeCARP;
 import jade.content.Concept;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import seisco.util.graphe.Arc;
 
 /**

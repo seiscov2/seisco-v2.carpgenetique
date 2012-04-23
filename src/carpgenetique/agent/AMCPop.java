@@ -27,8 +27,8 @@ public class AMCPop extends AgentMobileCalcul {
     protected float lastFitness;
     protected int countFitness;
             
-    protected Date debutExecution;
-    protected Date finExecution;
+    protected long debutExecution;
+    protected long finExecution;
     protected long timeExecAlgo;
     
     /**
@@ -55,7 +55,7 @@ public class AMCPop extends AgentMobileCalcul {
         this.lastFitness = 0;
         this.countFitness = 0;
         
-        this.debutExecution = new Date();
+        this.debutExecution = System.currentTimeMillis();
         this.timeExecAlgo = 0;
         
         this.etats.add(new Etat("demandeSolution", false));
@@ -142,7 +142,7 @@ public class AMCPop extends AgentMobileCalcul {
      * @since 2012
      */
     public long getDebutExecution() {
-        return this.debutExecution.getTime();
+        return this.debutExecution;
     }
     
     /**
@@ -162,7 +162,7 @@ public class AMCPop extends AgentMobileCalcul {
             Individu sol = (Individu)this.cacheSolution;
             
             println(this.getLocalName() + " - " + sol.getFitness(), out);
-            println("Temps total: " + DateHelper.formatMillisecondes(finExecution.getTime()-debutExecution.getTime()), out);
+            println("Temps total: " + DateHelper.formatMillisecondes(finExecution-debutExecution), out);
             println("\tAlgo : " + DateHelper.formatMillisecondes(this.timeExecAlgo), out);
             println("\tfonctionObjectif : " + DateHelper.formatMillisecondes(algo.getTimeObjectiveFunction()), out);
         } catch(FileNotFoundException ex) {
@@ -183,11 +183,11 @@ public class AMCPop extends AgentMobileCalcul {
      * <p>Remplace le temps de fin de l'exécution total de l'agent.
      * 
      * @param date
-     *      La nouvelle date de fin
+     *      La nouvelle date de fin (en milliseconde)
      * @since 2012
      * @see #getFinExecution() 
      */
-    public void setFinExecution(Date date) {
+    public void setFinExecution(long date) {
         this.finExecution = date;
     }
 
@@ -197,10 +197,10 @@ public class AMCPop extends AgentMobileCalcul {
      * @return 
      *      Le temps en millisecondes
      * @since 2012
-     * @see #setFinExecution(Date) 
+     * @see #setFinExecution(long) 
      */
     public long getFinExecution() {
-        return this.finExecution.getTime();
+        return this.finExecution;
     }
     
     /**

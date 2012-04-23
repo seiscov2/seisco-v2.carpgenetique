@@ -152,7 +152,12 @@ public class AlgoGenCARP extends Algorithme {
         int nbIndividusSurvie = Math.round(anciennePopulation.getPopulationSize() * tauxSurvie);
         
         for(int i = 0; i < nbIndividusSurvie; i++) {
-            Individu ind = anciennePopulation.getIndividus().get(i);
+            Individu ind=null;
+            try {
+                ind = anciennePopulation.getIndividus().get(i).copy();
+            } catch(CloneNotSupportedException ex) {
+                Logger.getLogger(AlgoGenCARP.class.getName()).log(Level.SEVERE, null, ex);
+            }
             nouvellePopulation.ajouterIndividu(ind);
         }
         
@@ -161,31 +166,18 @@ public class AlgoGenCARP extends Algorithme {
         Individu[] enfants = new Individu[2];
         
         for(int i=0; i < borneSup; ) {
-            Individu ind1 = selectionner();
-            Individu ind2 = selectionner();
+            Individu ind1=null;
+            Individu ind2=null;
+            try {
+                ind1 = selectionner().copy();
+                ind2 = selectionner().copy();
+            } catch(CloneNotSupportedException ex) {
+                Logger.getLogger(AlgoGenCARP.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
             float tauxAppOpCrois = (float) Math.random();
             float tauxAppOpMuta = (float) Math.random();
-
-            // SCOHY
-            // modification de croisement / mutation
-            // si le croisement a lieu mais pas la mutation, le else de la mutation va écraser l'effet du croisement
-            /*
-            if(tauxAppOpCrois <= probCroisement) {
-                enfants = (Individu[]) getOperateurs().get(0).operate(ind1,ind2);
-            } else {
-                enfants[0] = ind1;
-                enfants[1] = ind2;
-            }
-
-            if(tauxAppOpMuta<=probMutation){
-                enfants = (Individu[]) getOperateurs().get(1).operate((Object[]) enfants);
-            } else {
-                enfants[0] = ind1;
-                enfants[1] = ind2;
-            }
-            //*/
-            //*
+            
             if(tauxAppOpCrois <= probCroisement) 
                 enfants = (Individu[])getOperateurs().get(0).operate(ind1, ind2);
             else {
@@ -195,9 +187,6 @@ public class AlgoGenCARP extends Algorithme {
 
             if(tauxAppOpMuta<=probMutation)
                 enfants = (Individu[]) getOperateurs().get(1).operate((Object[]) enfants);
-            //*/
-            //fin modif
-
             
             if(nouvellePopulation.getNoCloneType().equals("fitness")) {
                 if((i < borneSup)) {
@@ -239,11 +228,11 @@ public class AlgoGenCARP extends Algorithme {
      * @since 2012
      */
     private void calculateFitness(Individu bob) {
-        Date start = new Date();
+        long start = System.currentTimeMillis();
         float newFitness = getProbleme().fonctionObjectif(bob);				
-        Date end = new Date();
+        long end = System.currentTimeMillis();
         bob.setFitness(newFitness);
-        timeObjectiveFunction += end.getTime() - start.getTime();
+        timeObjectiveFunction += (end - start);
     }
 
 }

@@ -95,9 +95,6 @@ public class CroisementLOX extends Operateur {
                 Individu enfant1 = new Individu(tailleChromosome);
                 Individu enfant2 = new Individu(tailleChromosome);
 
-                // System.out.println("t="+tailleChromosome+", t1="+enfant1.getTaches().size()+",t2="+enfant2.getTaches().size());
-                // SCOHY - Vérifier la taille du tableau
-
                 /*
                  * La taille du tableau est définie au moyen de la méthode
                  * "setNbTaches" de la classe SolutionCARP. Le parametre
@@ -105,8 +102,6 @@ public class CroisementLOX extends Operateur {
                  * appel au constructeur qui fixe le nb de taches.
                  */
 
-                // enfant1.getTaches().setSize(tailleChromosome);
-                // enfant2.getTaches().setSize(tailleChromosome);
                 a = (new Random()).nextInt(tailleChromosome);
                 b = (new Random()).nextInt(tailleChromosome);
 

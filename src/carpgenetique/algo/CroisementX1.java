@@ -87,9 +87,6 @@ public class CroisementX1 extends Operateur {
                 Individu enfant1 = new Individu(tailleChromosome);
                 Individu enfant2 = new Individu(tailleChromosome);
 
-                //enfant1.getMesTaches().setSize(tailleChromosome);
-                //enfant2.getMesTaches().setSize(tailleChromosome);
-                
                 p = 1;
                 do{
                     q = (new Random()).nextInt(tailleChromosome);
